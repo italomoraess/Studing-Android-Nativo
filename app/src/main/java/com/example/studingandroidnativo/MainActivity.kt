@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         btnAbrir = findViewById(R.id.btn_abrir);
         btnAbrir.setOnClickListener{
             val intent = Intent(this, DetaisActivity::class.java);
+            intent.putExtra("filme", "The Witcher")
             startActivity(intent)
         }
     }
