@@ -1,5 +1,6 @@
 package com.example.studingandroidnativo
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -19,8 +20,12 @@ class DetaisActivity : AppCompatActivity() {
 
         val bundle = intent.extras;
         if (bundle != null) {
-            val filme = bundle.getString("filme");
-            textFilme.text = filme;
+            val filme = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                bundle.getParcelable("filme", Filme::class.java);
+            } else{
+                bundle.getParcelable("filme");
+            }
+            textFilme.text = "${filme?.nome} - ${filme?.distribuidor}";
         }
         btnFechar.setOnClickListener { finish() }
     }

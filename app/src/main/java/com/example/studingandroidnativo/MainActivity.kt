@@ -20,6 +20,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetaisActivity::class.java);
             intent.putExtra("filme", "The Witcher")
             startActivity(intent)
+
+            val filme = Filme(
+                "sem limites",
+                "teste",
+                4.8,
+                "Italo moraes",
+                "Netflix"
+            );
+
+            intent.putExtra("filme", filme);
         }
     }
 
